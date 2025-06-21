@@ -38,25 +38,34 @@
         }
 
         .hero-section {
-            background: radial-gradient(circle at top left, #001f3f, transparent 70%),
-                        radial-gradient(circle at bottom right, #000a1a, transparent 70%); /* Base deep blues */
+            background-color: #0d0f1a; /* Base dark color for background */
             position: relative;
             overflow: hidden;
-            /* Enhanced animated background layers */
+            /* Main animated background - combination of multiple gradients */
             background-image:
-                radial-gradient(at 27% 68%, hsla(208, 90%, 54%, 0.3) 0px, transparent 50%), /* Increased opacity */
-                radial-gradient(at 73% 32%, hsla(240, 70%, 40%, 0.3) 0px, transparent 50%), /* Increased opacity */
-                radial-gradient(at 9% 88%, hsla(220, 80%, 60%, 0.3) 0px, transparent 50%), /* Increased opacity */
-                radial-gradient(at 81% 12%, hsla(250, 60%, 30%, 0.3) 0px, transparent 50%), /* Increased opacity */
-                radial-gradient(at 55% 45%, hsla(230, 95%, 45%, 0.3) 0px, transparent 50%); /* Increased opacity */
-            background-size: 250% 250%, 250% 250%, 250% 250%, 250% 250%, 250% 250%; /* Larger for more visible movement */
-            animation: moveBackground 20s ease infinite alternate; /* Faster animation */
+                radial-gradient(circle at 10% 20%, hsla(210, 90%, 60%, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 90% 80%, hsla(240, 70%, 50%, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at 40% 70%, hsla(270, 80%, 70%, 0.4) 0%, transparent 70%),
+                radial-gradient(circle at 70% 30%, hsla(180, 70%, 60%, 0.4) 0%, transparent 70%),
+                radial-gradient(circle at 50% 50%, hsla(230, 95%, 45%, 0.3) 0%, transparent 80%); /* Base large, subtle pulse */
+
+            background-size: 400% 400%, 400% 400%, 300% 300%, 300% 300%, 500% 500%; /* Larger sizes for movement */
+            animation:
+                moveLight 25s ease-in-out infinite alternate, /* Primary sweeping light */
+                pulseGlow 15s ease-in-out infinite alternate; /* Subtle pulsating glow */
         }
 
-        @keyframes moveBackground {
-            0% { background-position: 0% 0%, 50% 100%, 100% 0%, 0% 50%, 75% 25%; }
-            100% { background-position: 100% 100%, 0% 0%, 50% 100%, 100% 50%, 25% 75%; }
+        @keyframes moveLight {
+            0% { background-position: 0% 0%, 100% 100%, 0% 50%, 100% 50%, 50% 50%; }
+            100% { background-position: 100% 100%, 0% 0%, 100% 50%, 0% 50%, 50% 50%; }
         }
+
+        @keyframes pulseGlow {
+            0% { background-size: 400% 400%, 400% 400%, 300% 300%, 300% 300%, 500% 500%; }
+            50% { background-size: 420% 420%, 420% 420%, 320% 320%, 320% 320%, 520% 520%; }
+            100% { background-size: 400% 400%, 400% 400%, 300% 300%, 300% 300%, 500% 500%; }
+        }
+
 
         .project-card {
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
