@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 3 Placeholder Title - Thomas Cox Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0f1a; /* Very dark background */
+            color: #f8fafc; /* Light off-white */
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a202c; }
+        ::-webkit-scrollbar-thumb { background: #4a90e2; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b7cd6; }
 
+        .header-bg { background: linear-gradient(to right, #1f2937, #111827); }
+
+        .content-section {
+            background-color: #1a202c; /* Slightly lighter background for content area */
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid #2d3748;
+        }
+        .tag-pill {
+            background-color: #313a4b; /* Darker tag background */
+            color: #60a5fa; /* Blue accent */
+            padding: 6px 12px;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-image: linear-gradient(to right, #4a90e2 0%, #63b3ed 51%, #4a90e2 100%);
+            padding: 12px 30px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #0c2d54;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .btn-primary:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+        .mechanic-card {
+            background-color: #242b38; /* Even darker for nested card */
+            border-left: 4px solid #4a90e2; /* Blue accent bar */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased leading-normal tracking-wide pt-20"> <!-- Added padding-top for fixed header -->
+
+    <!-- Header Section (reused from index.html for consistent navigation) -->
+    <header class="header-bg shadow-lg py-4 fixed top-0 w-full z-10">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html#home" class="text-3xl font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2">Thomas Cox</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#home" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Home</a>
+                <a href="index.html#portfolio" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Projects</a>
+                <a href="index.html#about" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">About</a>
+                <a href="index.html#skills" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Skills</a>
+                <a href="index.html#links" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Links</a>
+                <a href="index.html#contact" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Contact</a>
+            </div>
+            <!-- Mobile Menu Button (if needed, ensure it points back correctly) -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg">
+            <a href="index.html#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
+            <a href="index.html#portfolio" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
+            <a href="index.html#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
+            <a href="index.html#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
+            <a href="index.html#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
+            <a href="index.html#contact" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-10 md:py-16">
+        <div class="content-section">
+            <a href="index.html#portfolio" class="text-blue-400 hover:text-blue-300 mb-6 inline-block">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+            </a>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-blue-300 drop-shadow-md">Project 3: Placeholder Title</h1>
+
+            <!-- Game Bio / About the Game -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">About Project 3</h2>
+            <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                <strong>THIS IS THE BIO FOR PROJECT 3.</strong>
+                Describe what this game/project is about. What's its core concept, genre, and unique selling points? How does it differentiate itself? What kind of experience does it offer the player?
+                <em>Example: "Project 3 is a cozy simulation game where players manage a magical tea shop, growing unique ingredients, brewing potions, and serving whimsical customers. Focuses on relaxation and progression."</em>
+                Be engaging and concise, but provide enough detail to hook the reader.
+            </p>
+
+            <!-- Key Features / Overview -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Quick Facts & My Role</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <p class="text-gray-300 mb-2"><strong>Genre:</strong> [e.g., RPG, Shooter, Puzzle, Platformer]</p>
+                    <p class="text-gray-300 mb-2"><strong>Platform:</strong> [e.g., PC, Mobile, WebGL]</p>
+                    <p class="text-gray-300 mb-2"><strong>Development Time:</strong> [e.g., 3 months, 6 weeks]</p>
+                    <p class="text-gray-300 mb-2"><strong>Team Size:</strong> [e.g., Solo, 3 (My Role: Programmer)]</p>
+                </div>
+                <div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="tag-pill">[Engine/Framework Used]</span>
+                        <span class="tag-pill">[Language Used]</span>
+                        <span class="tag-pill">[Key Technology 1]</span>
+                        <span class="tag-pill">[Key Technology 2]</span>
+                        <span class="tag-pill">[Tool Used]</span>
+                        <span class="tag-pill">[Concept/Feature]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visuals: Screenshots & Videos (Enhanced Guidance) -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Visuals & Gameplay Highlights</h2>
+            <div class="grid grid-cols-1 gap-6 mb-8">
+                <!-- Primary Gameplay Video (Crucial for a game portfolio) -->
+                <div class="aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-xl flex items-center justify-center text-gray-400 text-center">
+                    <!-- REPLACE 'YOUR_MAIN_GAMEPLAY_VIDEO_ID' with your ACTUAL YouTube or Vimeo video ID for Project 3 -->
+                    <!-- This should be your main gameplay trailer or a comprehensive overview video for Project 3 -->
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_MAIN_GAMEPLAY_VIDEO_ID_FOR_PROJECT_3?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Project 3 Gameplay Trailer"></iframe>
+                </div>
+                <p class="text-gray-400 text-sm text-center">
+                    <strong>Tip:</strong> Embed a 1-2 minute gameplay trailer or a short demo reel showcasing core mechanics and visual fidelity for Project 3.
+                </p>
+
+                <!-- Multiple Screenshots / GIFs -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+3+Screenshot+1" alt="Screenshot of key gameplay moment 1 from Project 3" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+3+Screenshot+2" alt="Screenshot of character or environment from Project 3" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+3+Screenshot+3" alt="GIF showing a specific mechanic or animation from Project 3" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+3+Screenshot+4" alt="UI or HUD example from Project 3" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
+                    <!-- Add more as needed, consider GIFs for showing quick animations/mechanics -->
+                </div>
+                <p class="text-gray-400 text-sm text-center mt-4">
+                    <strong>Tip:</strong> Use high-resolution images. GIFs are great for showing quick, repeatable mechanics or animations. Caption each image briefly. Make sure these are all from Project 3.
+                </p>
+            </div>
+
+            <!-- Core Mechanics Explained -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Core Game Mechanics & Implementation (Project 3)</h2>
+            <div class="space-y-6 mb-8">
+                <!-- Mechanic 1 for Project 3 -->
+                <div class="mechanic-card">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">1. [Name of Mechanic 1 for Project 3]</h3>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 3.
+                        <em>Example: "The 'Ingredient Harvesting' mechanic allows players to cultivate and gather magical ingredients from their garden, which directly impacts the types of potions they can brew."</em>
+                    </p>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
+                        <em>Example: "Developed a tile-based gardening system in Godot Engine using GDScript. Implemented a growth simulation based on in-game time and environmental factors (e.g., watering, sunlight). Created a custom data structure to manage plot states and ingredient types efficiently, allowing for dynamic spawning of harvestable resources."</em>
+                        Be specific about technologies, algorithms, and your code decisions.
+                    </p>
+                    <!-- Optional: Link to relevant code snippet on GitHub or an explanation -->
+                    <!-- <a href="https://github.com/YourGitHubProfile/Project3/blob/main/Scripts/HarvestingSystem.gd" target="_blank" class="text-blue-400 hover:underline text-sm">View Code Snippet <i class="fas fa-external-link-alt ml-1"></i></a> -->
+                </div>
+
+                <!-- Mechanic 2 for Project 3 -->
+                <div class="mechanic-card">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">2. [Name of Mechanic 2 for Project 3]</h3>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 3.
+                    </p>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
+                    </p>
+                </div>
+
+                <!-- Mechanic 3 for Project 3 (Add more as needed) -->
+                <div class="mechanic-card">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">3. [Name of Mechanic 3 for Project 3]</h3>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 3.
+                    </p>
+                    <p class="text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
+                    </p>
+                </div>
+
+                <!-- Add more mechanics as needed for Project 3 -->
+            </div>
+
+            <!-- My Role & Contributions (Project 3 Specific) -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">My Specific Contributions to Project 3</h2>
+            <ul class="list-disc list-inside text-gray-300 mb-8 leading-relaxed">
+                <li><strong>[Your Specific Contribution 1]:</strong> [Detailed explanation, use action verbs and quantify where possible. <em>Example: "Developed the dynamic customer request system, including randomized orders and customer preference tracking, leading to varied gameplay sessions."</em>]</li>
+                <li><strong>[Your Specific Contribution 2]:</strong> [Detailed explanation. <em>Example: "Implemented the core brewing mechanics, involving recipe validation, ingredient consumption, and potion effect generation."</em>]</li>
+                <li><strong>[Your Specific Contribution 3]:</strong> [Detailed explanation. <em>Example: "Designed and integrated the UI for inventory management and crafting, ensuring an intuitive and engaging user experience tailored for a cozy sim."</em>]</li>
+                <li><strong>[Your Specific Contribution 4]:</strong> [Detailed explanation.]</li>
+                <!-- Add more contributions relevant to Project 3 -->
+            </ul>
+
+            <!-- Challenges & Learning (Project 3 Specific) -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Key Challenges & My Learnings (Project 3)</h2>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                <strong>Describe a significant technical or design challenge unique to Project 3.</strong>
+                <em>Example: "A key challenge was designing an intuitive yet deep crafting system that felt rewarding without being overly complex for a casual simulation game. I tackled this by iterating heavily on the UI/UX, incorporating visual feedback for ingredient combinations, and balancing recipe difficulties. This process highlighted the importance of player-centric design and continuous iteration based on user feedback, even for seemingly simple mechanics."</em>
+                Explain <strong>how</strong> you solved it and <strong>what you learned</strong> from that process. This shows your problem-solving skills and capacity for growth.
+            </p>
+
+            <!-- Links for Project 3 -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Project 3 Links</h2>
+            <div class="flex flex-wrap gap-4 mb-8">
+                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fas fa-play-circle"></i> <span>Play Demo (Project 3)</span>
+                </a>
+                <a href="https://github.com/YourGitHubProfile/Project3Repo" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fab fa-github"></i> <span>View Code on GitHub (Project 3)</span>
+                </a>
+                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fas fa-pencil-alt"></i> <span>Dev Blog/Post-Mortem (Project 3)</span>
+                </a>
+                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fab fa-itch-io"></i> <span>Itch.io Page (Project 3)</span>
+                </a>
+                <!-- Add more relevant links (e.g., Artstation for art assets, Steam Greenlight, etc. specific to Project 3) -->
+            </div>
+
+            <a href="index.html#portfolio" class="text-blue-400 hover:text-blue-300 mt-8 inline-block">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Projects
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer Section (reused from index.html) -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-400 mt-10">
+        <div class="container mx-auto px-4">
+            <p>&copy; <span id="current-year-footer"></span> Thomas Cox. All rights reserved.</p>
+            <p class="mt-2">Designed and Developed by Thomas Cox</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year-footer').textContent = new Date().getFullYear();
+
+        // Mobile menu toggle (if included) - ensure it works on sub-pages too
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
