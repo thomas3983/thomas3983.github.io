@@ -49,80 +49,99 @@
             background-image: linear-gradient(to bottom right, #001f3f, #000a1a);
         }
 
-        /* Animated light source 1 (blue) - main ambient glow */
+        /* Animated light source 1 (purple) - main ambient glow */
         .hero-section::before {
             content: '';
             position: absolute;
-            width: 300vw; /* Even wider for extremely slow, expansive movement */
-            height: 300vh; /* Even taller */
-            background: radial-gradient(circle at center, hsla(210, 90%, 65%, 0.1) 0%, transparent 70%); /* Very low max opacity, wide transparent fade */
-            animation: lightMove1 90s ease-in-out infinite; /* Much slower, continuous loop */
+            width: 250vw; /* Wider for expansive movement */
+            height: 250vh; /* Taller */
+            background: radial-gradient(circle at center, hsla(270, 90%, 65%, 0.25) 0%, transparent 60%); /* Higher max opacity, more concentrated glow */
+            animation: lightMove1 70s ease-in-out infinite; /* Slower, continuous loop */
             will-change: transform, opacity;
             z-index: 0;
             pointer-events: none;
-            opacity: 1; /* Ensure it's always "on" */
+            animation-delay: 1s; /* Starts after 1 second */
+            opacity: 0; /* Ensures it is truly invisible during the delay */
+            animation-fill-mode: forwards; /* Holds the state after the delay and before the first keyframe */
         }
 
-        /* Animated light source 2 (subtle purple/magenta) - secondary ambient glow */
+        /* Animated light source 2 (complementary magenta) - secondary ambient glow */
         .hero-section::after {
             content: '';
             position: absolute;
-            width: 280vw; /* Wide */
-            height: 280vh; /* Tall */
-            background: radial-gradient(circle at center, hsla(270, 80%, 75%, 0.07) 0%, transparent 65%); /* Even lower max opacity, softer glow */
-            animation: lightMove2 110s ease-in-out infinite reverse; /* Even longer duration, reversed for desynced motion */
-            animation-delay: 25s; /* Significant start delay for greater randomness */
+            width: 230vw; /* Wide */
+            height: 230vh; /* Tall */
+            background: radial-gradient(circle at center, hsla(300, 80%, 75%, 0.2) 0%, transparent 60%); /* Higher max opacity, softer glow */
+            animation: lightMove2 85s ease-in-out infinite; /* Longer duration, continuous loop */
+            animation-delay: 2.5s; /* Starts after 2.5 seconds, staggered */
             will-change: transform, opacity;
             z-index: 0;
             pointer-events: none;
-            opacity: 1; /* Ensure it's always "on" */
+            opacity: 0; /* Ensures it is truly invisible during the delay */
+            animation-fill-mode: forwards; /* Holds the state after the delay and before the first keyframe */
         }
 
-        /* Keyframes for light source 1 (blue) - Extremely organic, slow, and sweeping path */
+        /* Keyframes for light source 1 (purple) - Extremely organic, slow, and sweeping path */
         @keyframes lightMove1 {
             0% {
-                transform: translate(-100%, 100%) scale(0.4) rotate(0deg);
-                opacity: 0.8; /* Keep consistent opacity throughout cycle for no "turn off" */
+                transform: translate(-150%, 150%) scale(0.3) rotate(0deg); /* Start off-screen */
+                opacity: 0; /* Starts completely invisible */
             }
-            25% {
-                transform: translate(-30%, 30%) scale(0.6) rotate(90deg);
-                opacity: 1;
+            5% { /* Introduce rapid fade-in from off-screen */
+                transform: translate(-140%, 140%) scale(0.35) rotate(20deg);
+                opacity: 0.15;
+            }
+            20% {
+                transform: translate(-40%, 30%) scale(0.7) rotate(90deg);
+                opacity: 0.3;
             }
             50% {
-                transform: translate(40%, -40%) scale(0.8) rotate(180deg);
-                opacity: 0.9;
+                transform: translate(30%, -40%) scale(1.0) rotate(180deg); /* Peak visibility, large */
+                opacity: 0.4;
             }
-            75% {
-                transform: translate(100%, -100%) scale(0.6) rotate(270deg);
-                opacity: 0.8;
+            80% {
+                transform: translate(100%, -100%) scale(0.7) rotate(270deg);
+                opacity: 0.2;
+            }
+            95% { /* Fade out as it moves off-screen */
+                transform: translate(140%, -140%) scale(0.35) rotate(340deg);
+                opacity: 0.05;
             }
             100% {
-                transform: translate(-100%, 100%) scale(0.4) rotate(360deg); /* Seamless rotation loop */
-                opacity: 0.8;
+                transform: translate(-150%, 150%) scale(0.3) rotate(360deg); /* Back to start, fully off-screen, fully invisible */
+                opacity: 0;
             }
         }
 
-        /* Keyframes for light source 2 (purple) - Very fluid, wandering motion, extremely subtle overall */
+        /* Keyframes for light source 2 (magenta) - Very fluid, wandering motion, extremely subtle overall */
         @keyframes lightMove2 {
             0% {
-                transform: translate(100%, -100%) scale(0.5) rotate(0deg);
-                opacity: 0.8; /* Keep consistent opacity throughout cycle for no "turn off" */
+                transform: translate(150%, -150%) scale(0.2) rotate(0deg); /* Start off-screen */
+                opacity: 0; /* Starts completely invisible */
             }
-            25% {
-                transform: translate(20%, -60%) scale(0.7) rotate(70deg);
-                opacity: 1;
+            5% { /* Introduce rapid fade-in from off-screen */
+                transform: translate(140%, -140%) scale(0.25) rotate(20deg);
+                opacity: 0.1;
+            }
+            20% {
+                transform: translate(50%, -20%) scale(0.6) rotate(100deg);
+                opacity: 0.25;
             }
             50% {
-                transform: translate(-80%, 10%) scale(0.9) rotate(140deg);
-                opacity: 0.9;
+                transform: translate(-30%, 50%) scale(0.9) rotate(180deg); /* Peak visibility */
+                opacity: 0.35;
             }
-            75% {
-                transform: translate(-10%, 90%) scale(0.7) rotate(210deg);
-                opacity: 0.8;
+            80% {
+                transform: translate(-100%, 120%) scale(0.6) rotate(250deg);
+                opacity: 0.15;
+            }
+            95% { /* Fade out as it moves off-screen */
+                transform: translate(-140%, 150%) scale(0.25) rotate(340deg);
+                opacity: 0.05;
             }
             100% {
-                transform: translate(100%, -100%) scale(0.5) rotate(280deg); /* Seamless rotation loop */
-                opacity: 0.8;
+                transform: translate(150%, -150%) scale(0.2) rotate(360deg); /* Back to start, fully off-screen, fully invisible */
+                opacity: 0;
             }
         }
 
@@ -267,20 +286,19 @@
                 <a href="#contact" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Contact</a>
             </div>
             <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none">
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg">
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg" role="navigation" aria-label="Mobile navigation">
             <a href="#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
             <a href="#portfolio" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
             <a href="#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
             <a href="#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
-            <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
-            <a href="#contact" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
+            <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
         </div>
     </header>
 
@@ -358,10 +376,13 @@
             <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 text-blue-300 drop-shadow-md">About Me</h2>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    Hello! I'm Thomas Cox, a passionate game developer with a strong focus on creating engaging and innovative interactive experiences. My journey in game development began with a fascination for crafting worlds and solving complex design challenges. I believe games are powerful mediums for storytelling, problem-solving, and pure fun!
+                    I am a <strong>Game Development graduate</strong> with a strong focus on both <strong>production</strong> and <strong>programming</strong>. I am currently dedicated to improving my skills in <strong>C++ and Unreal Engine</strong>, driven by a passion for building <strong>immersive gameplay experiences</strong> and streamlining development workflows.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I thrive on the challenge of bringing game concepts to life, from initial design to polished execution. My experience spans across various engines and programming languages, always aiming for clean, efficient, and maintainable code. Whether it's crafting intricate gameplay mechanics, designing compelling levels, or optimizing performance, I'm dedicated to delivering high-quality results.
+                    I have hands-on experience <strong>leading game projects</strong>, and implementing <strong>core mechanics and gameplay systems</strong>. My background has fostered strong <strong>problem-solving</strong>, <strong>creativity</strong>, and <strong>organizational skills</strong>, developed through both collaborative and independent work.
+                </p>
+                <p class="text-lg text-gray-200 leading-relaxed mb-6">
+                    I am open to <strong>junior roles in game production or programming</strong>, with a strong desire to grow, contribute, and continuously improve while learning alongside experienced developers.
                 </p>
             </div>
         </section>
@@ -403,15 +424,15 @@
             <div class="container mx-auto px-6 max-w-2xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-12 text-blue-300 drop-shadow-md">Connect with Me</h2>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" class="social-link">
+                    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" class="social-link" aria-label="LinkedIn Profile">
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="your-resume.pdf" target="_blank" class="social-link">
+                    <a href="your-resume.pdf" target="_blank" class="social-link" aria-label="Download Resume (CV)">
                         <i class="fas fa-file-alt"></i>
                         <span>Resume (CV)</span>
                     </a>
-                     <a href="https://github.com/YourGitHubProfile" target="_blank" class="social-link">
+                     <a href="https://github.com/YourGitHubProfile" target="_blank" class="social-link" aria-label="GitHub Profile">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
@@ -423,24 +444,26 @@
         <!-- Contact Section -->
         <section id="contact" class="py-16 md:py-24 section-bg-light animate-fade-in">
             <div class="container mx-auto px-6 max-w-2xl">
-                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-blue-300 drop-shadow-md">Get In Touch</h2>
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 text-blue-300 drop-shadow-md">Contact Me</h2>
                 <p class="text-lg text-center text-gray-300 mb-8 leading-relaxed">
-                    Have a project in mind, a game idea to discuss, or just want to chat about the latest in game development? Feel free to reach out! I'm always open to new connections and opportunities.
+                    If you have any questions, wish to discuss a project, or are exploring potential work opportunities, please don't hesitate to reach out.
                 </p>
-                <form class="bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-700">
+                <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_HASH" method="POST" class="bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-700">
                     <div class="mb-6">
                         <label for="name" class="block text-gray-300 text-lg font-semibold mb-2">Name</label>
-                        <input type="text" id="name" name="name" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your Name" required>
+                        <input type="text" id="name" name="name" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your Name" required aria-label="Your Name">
                     </div>
                     <div class="mb-6">
                         <label for="email" class="block text-gray-300 text-lg font-semibold mb-2">Email</label>
-                        <input type="email" id="email" name="email" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="your.email@example.com" required>
+                        <input type="email" id="email" name="email" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="your.email@example.com" required aria-label="Your Email Address">
+                        <input type="hidden" name="_replyto"> <!-- Formspree reply-to field -->
                     </div>
                     <div class="mb-6">
                         <label for="message" class="block text-gray-300 text-lg font-semibold mb-2">Message</label>
-                        <textarea id="message" name="message" rows="6" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message..." required></textarea>
+                        <textarea id="message" name="message" rows="6" class="w-full p-4 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Your message..." required aria-label="Your Message"></textarea>
                     </div>
                     <button type="submit" class="w-full btn-gradient">Send Message</button>
+                    <div id="formMessage" class="mt-4 text-center text-lg hidden rounded-md py-3 px-4" role="alert"></div>
                 </form>
             </div>
         </section>
@@ -465,8 +488,10 @@
                 });
                 // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
                 }
             });
         });
@@ -474,7 +499,10 @@
         // Toggle mobile menu
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
             mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
         });
 
         // Set current year in footer
@@ -507,6 +535,68 @@
 
         // Ensure hero section is visible immediately
         document.getElementById('home').style.opacity = '1';
+
+
+        // --- Contact Form Submission Logic (Formspree.io) ---
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Set the _replyto field to the user's entered email
+            const emailInput = document.getElementById('email');
+            const replyToInput = contactForm.querySelector('input[name="_replyto"]');
+            if (replyToInput) {
+                replyToInput.value = emailInput.value;
+            }
+
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            // Show loading message
+            formMessage.classList.remove('hidden', 'bg-green-700', 'bg-red-700', 'text-green-100', 'text-red-100');
+            formMessage.classList.add('bg-blue-700', 'text-blue-100', 'animate-pulse');
+            formMessage.textContent = 'Sending message...';
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                });
+
+                if (response.ok) {
+                    formMessage.classList.remove('bg-blue-700', 'animate-pulse');
+                    formMessage.classList.add('bg-green-700', 'text-green-100');
+                    formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
+                    contactForm.reset(); // Clear the form
+                } else {
+                    const data = await response.json();
+                    formMessage.classList.remove('bg-blue-700', 'animate-pulse');
+                    formMessage.classList.add('bg-red-700', 'text-red-100');
+                    if (data.errors) {
+                        formMessage.textContent = data.errors.map(error => error.message).join(', ');
+                    } else {
+                        formMessage.textContent = 'Oops! There was an error sending your message. Please try again.';
+                    }
+                }
+            } catch (error) {
+                console.error('Network error:', error);
+                formMessage.classList.remove('bg-blue-700', 'animate-pulse');
+                formMessage.classList.add('bg-red-700', 'text-red-100');
+                formMessage.textContent = 'Network error. Please check your connection and try again.';
+            } finally {
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.classList.add('hidden');
+                }, 5000);
+            }
+        });
     </script>
 </body>
 </html>
