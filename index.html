@@ -38,23 +38,24 @@
         }
 
         .hero-section {
-            background: linear-gradient(to bottom right, #001f3f, #000a1a); /* Deep blue to very dark blue */
+            background: radial-gradient(circle at top left, #001f3f, transparent 70%),
+                        radial-gradient(circle at bottom right, #000a1a, transparent 70%); /* Base deep blues */
             position: relative;
             overflow: hidden;
+            /* Enhanced animated background layers */
+            background-image:
+                radial-gradient(at 27% 68%, hsla(208, 90%, 54%, 0.3) 0px, transparent 50%), /* Increased opacity */
+                radial-gradient(at 73% 32%, hsla(240, 70%, 40%, 0.3) 0px, transparent 50%), /* Increased opacity */
+                radial-gradient(at 9% 88%, hsla(220, 80%, 60%, 0.3) 0px, transparent 50%), /* Increased opacity */
+                radial-gradient(at 81% 12%, hsla(250, 60%, 30%, 0.3) 0px, transparent 50%), /* Increased opacity */
+                radial-gradient(at 55% 45%, hsla(230, 95%, 45%, 0.3) 0px, transparent 50%); /* Increased opacity */
+            background-size: 250% 250%, 250% 250%, 250% 250%, 250% 250%, 250% 250%; /* Larger for more visible movement */
+            animation: moveBackground 20s ease infinite alternate; /* Faster animation */
         }
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(74, 144, 226, 0.1) 0%, transparent 70%); /* Subtle radial glow */
-            animation: rotate 20s linear infinite;
-        }
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 0%, 50% 100%, 100% 0%, 0% 50%, 75% 25%; }
+            100% { background-position: 100% 100%, 0% 0%, 50% 100%, 100% 50%, 25% 75%; }
         }
 
         .project-card {
