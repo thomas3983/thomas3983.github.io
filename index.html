@@ -45,78 +45,84 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            /* Optional: subtle base gradient to enhance depth */
+            /* Subtle base gradient to enhance depth, blending with light animations */
             background-image: linear-gradient(to bottom right, #001f3f, #000a1a);
         }
 
-        /* Animated light sweep effect (::before pseudo-element) - First light */
+        /* Animated light source 1 (blue) - main ambient glow */
         .hero-section::before {
             content: '';
             position: absolute;
-            width: 180vw; /* Very wide to cover full sweep */
-            height: 180vh; /* Very tall */
-            background: radial-gradient(circle at center, rgba(74, 144, 226, 0.4) 0%, rgba(74, 144, 226, 0.2) 25%, transparent 65%); /* Brighter, more defined blue glow */
-            transform: translate(-90%, 90%) scale(0.6); /* Start off-screen bottom-left, smaller */
-            animation: lightSweep 30s ease-in-out infinite alternate; /* Slower, continuous sweep */
-            will-change: transform, opacity; /* Optimize for animation performance */
-            z-index: 0; /* Behind content */
-            pointer-events: none; /* Ensure it doesn't block interactions */
-        }
-
-        /* Animated light (::after pseudo-element) - Second light, more random movement */
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            width: 160vw; /* Wide */
-            height: 160vh; /* Tall */
-            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0.15) 25%, transparent 60%); /* Purple/violet glow */
-            transform: translate(90%, -90%) scale(0.7); /* Start off-screen top-right, larger */
-            animation: lightFloat 25s ease-out infinite; /* Different animation for varied movement */
-            animation-delay: 5s; /* Start with a delay for randomness */
+            width: 300vw; /* Even wider for extremely slow, expansive movement */
+            height: 300vh; /* Even taller */
+            background: radial-gradient(circle at center, hsla(210, 90%, 65%, 0.1) 0%, transparent 70%); /* Very low max opacity, wide transparent fade */
+            animation: lightMove1 90s ease-in-out infinite; /* Much slower, continuous loop */
             will-change: transform, opacity;
             z-index: 0;
             pointer-events: none;
+            opacity: 1; /* Ensure it's always "on" */
         }
 
-        @keyframes lightSweep {
+        /* Animated light source 2 (subtle purple/magenta) - secondary ambient glow */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            width: 280vw; /* Wide */
+            height: 280vh; /* Tall */
+            background: radial-gradient(circle at center, hsla(270, 80%, 75%, 0.07) 0%, transparent 65%); /* Even lower max opacity, softer glow */
+            animation: lightMove2 110s ease-in-out infinite reverse; /* Even longer duration, reversed for desynced motion */
+            animation-delay: 25s; /* Significant start delay for greater randomness */
+            will-change: transform, opacity;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 1; /* Ensure it's always "on" */
+        }
+
+        /* Keyframes for light source 1 (blue) - Extremely organic, slow, and sweeping path */
+        @keyframes lightMove1 {
             0% {
-                transform: translate(-90%, 90%) scale(0.6);
-                opacity: 0.8;
+                transform: translate(-100%, 100%) scale(0.4) rotate(0deg);
+                opacity: 0.8; /* Keep consistent opacity throughout cycle for no "turn off" */
             }
             25% {
-                transform: translate(-30%, 30%) scale(1.0);
-                opacity: 1; /* Fully visible */
+                transform: translate(-30%, 30%) scale(0.6) rotate(90deg);
+                opacity: 1;
             }
             50% {
-                transform: translate(30%, -30%) scale(1.2); /* Largest and most visible */
+                transform: translate(40%, -40%) scale(0.8) rotate(180deg);
                 opacity: 0.9;
             }
             75% {
-                transform: translate(90%, -90%) scale(0.9);
-                opacity: 0.7;
+                transform: translate(100%, -100%) scale(0.6) rotate(270deg);
+                opacity: 0.8;
             }
             100% {
-                transform: translate(-90%, 90%) scale(0.6);
+                transform: translate(-100%, 100%) scale(0.4) rotate(360deg); /* Seamless rotation loop */
                 opacity: 0.8;
             }
         }
 
-        @keyframes lightFloat {
+        /* Keyframes for light source 2 (purple) - Very fluid, wandering motion, extremely subtle overall */
+        @keyframes lightMove2 {
             0% {
-                transform: translate(90%, -90%) scale(0.7) rotate(0deg);
-                opacity: 0.7;
+                transform: translate(100%, -100%) scale(0.5) rotate(0deg);
+                opacity: 0.8; /* Keep consistent opacity throughout cycle for no "turn off" */
             }
-            33% {
-                transform: translate(-10%, 60%) scale(1.1) rotate(60deg);
+            25% {
+                transform: translate(20%, -60%) scale(0.7) rotate(70deg);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(-80%, 10%) scale(0.9) rotate(140deg);
                 opacity: 0.9;
             }
-            66% {
-                transform: translate(70%, 10%) scale(0.8) rotate(120deg);
+            75% {
+                transform: translate(-10%, 90%) scale(0.7) rotate(210deg);
                 opacity: 0.8;
             }
             100% {
-                transform: translate(90%, -90%) scale(0.7) rotate(0deg);
-                opacity: 0.7;
+                transform: translate(100%, -100%) scale(0.5) rotate(280deg); /* Seamless rotation loop */
+                opacity: 0.8;
             }
         }
 
