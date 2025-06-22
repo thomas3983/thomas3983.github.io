@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Cox - All Projects</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0f1a; /* Very dark background */
+            color: #f8fafc; /* Light off-white */
+            scroll-behavior: smooth; /* Smooth scrolling for nav links */
+        }
+        /* Custom scrollbar for a sleeker look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a202c; /* Darker track */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a90e2; /* Bright blue thumb */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b7cd6; /* Darker blue on hover */
+        }
+
+        .header-bg {
+            background: linear-gradient(to right, #1f2937, #111827); /* Subtle gradient for header */
+            padding-top: 1.5rem; /* Default large padding */
+            padding-bottom: 1.5rem; /* Default large padding */
+            transition: padding 0.3s ease-in-out; /* Smooth transition for padding */
+            box-sizing: border-box; /* Include padding in height calculation */
+            display: flex; /* Ensures content aligns within header */
+            align-items: center; /* Vertically centers content within the header */
+            min-height: 96px; /* Ensure a minimum height for the default state */
+        }
+
+        .header-shrink {
+            padding-top: 0.5rem; /* Smaller padding when shrunk */
+            padding-bottom: 0.5rem; /* Smaller padding when shrunk */
+            min-height: 60px; /* Smaller minimum height when shrunk */
+        }
+
+        .logo-text {
+            font-size: 3rem; /* Default large logo font size */
+            transition: font-size 0.3s ease-in-out, line-height 0.3s ease-in-out;
+            line-height: 1; /* Normalize line height for smoother font size transitions */
+        }
+
+        .header-shrink .logo-text {
+            font-size: 2rem; /* Smaller logo font size when shrunk */
+        }
+
+        .nav-link {
+            font-size: 1.125rem; /* Default large nav link font size (text-lg) */
+            padding: 0.5rem 0.75rem; /* Default padding for links */
+            transition: font-size 0.3s ease-in-out, padding 0.3s ease-in-out;
+            line-height: 1; /* Normalize line height for smoother font size transitions */
+        }
+
+        .header-shrink .nav-link {
+            font-size: 0.9rem; /* Smaller nav link font size when shrunk */
+            padding: 0.25rem 0.5rem; /* Reduced padding for links when shrunk */
+        }
+
+        /* Ensure mobile menu button size consistency */
+        #mobile-menu-button svg {
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+        .header-shrink #mobile-menu-button svg {
+            width: 2rem; /* Smaller icon */
+            height: 2rem;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            background-color: #1a202c; /* Darker card background */
+            border: 1px solid #2d3748; /* Subtle border */
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            background-color: #242b38; /* Slightly lighter on hover */
+        }
+
+        /* Section background gradients - varied subtly */
+        .section-bg-mid {
+            background: linear-gradient(to bottom, #111827, #0d0f1a); /* Slightly lighter at top */
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+        /* Specific delay for elements within animated sections */
+        .animate-fade-in > * {
+            animation-delay: 0.2s; /* Apply a slight delay to children for staggered effect */
+        }
+        .animate-fade-in h2, .animate-fade-in h3 {
+            animation-delay: 0.1s;
+        }
+        .animate-fade-in p, .animate-fade-in .project-card, .animate-fade-in .skill-tag, .animate-fade-in .social-link {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Custom button styling for a cool effect */
+        .btn-gradient {
+            background-image: linear-gradient(to right, #4a90e2 0%, #63b3ed 51%, #4a90e2 100%);
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #0c2d54;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .btn-gradient:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body class="antialiased leading-normal tracking-wide">
+
+    <!-- Header Section -->
+    <header id="main-header" class="header-bg shadow-lg fixed top-0 w-full z-10">
+        <nav class="container mx-auto flex justify-between items-center px-4">
+            <a href="index.html#home" class="font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2 logo-text">Thomas Cox</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#home" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Home</a>
+                <a href="#all-projects" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
+                <a href="index.html#about" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">About</a>
+                <a href="index.html#skills" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Skills</a>
+                <a href="index.html#links" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Links</a>
+                <a href="index.html#contact" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Contact</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg" role="navigation" aria-label="Mobile navigation">
+            <a href="index.html#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
+            <a href="#all-projects" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
+            <a href="index.html#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
+            <a href="index.html#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
+            <a href="index.html#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
+            <a href="index.html#contact" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- All Projects Section -->
+        <section id="all-projects" class="py-16 md:py-24 section-bg-mid animate-fade-in">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 text-blue-300 drop-shadow-md">All My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                    <!-- Project Card 1 (from main page) -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+1+Image" alt="Project 1 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 1 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">A brief description of Project 1, what it is about, and its key highlights. This is a placeholder.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-700 text-blue-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack A</span>
+                                <span class="bg-green-700 text-green-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack B</span>
+                                <span class="bg-purple-700 text-purple-100 text-sm px-3 py-1 rounded-full shadow-inner">Concept A</span>
+                            </div>
+                            <a href="project-1-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 (from main page) -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+2+Image" alt="Project 2 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 2 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">A brief description of Project 2, what it is about, and its key highlights. This is a placeholder.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-yellow-700 text-yellow-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack C</span>
+                                <span class="bg-indigo-700 text-indigo-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack D</span>
+                                <span class="bg-red-700 text-red-100 text-sm px-3 py-1 rounded-full shadow-inner">Concept B</span>
+                            </div>
+                            <a href="project-2-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 (from main page) -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+3+Image" alt="Project 3 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 3 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">A brief description of Project 3, what it is about, and its key highlights. This is a placeholder.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-teal-700 text-teal-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack E</span>
+                                <span class="bg-orange-700 text-orange-100 text-sm px-3 py-1 rounded-full shadow-inner">Tech Stack F</span>
+                                <span class="bg-pink-700 text-pink-100 text-sm px-3 py-1 rounded-full shadow-inner">Concept C</span>
+                            </div>
+                            <a href="project-3-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                    <!-- New Project Card 4 -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+4+Image" alt="Project 4 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 4 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">This is a brand new project, showcasing a different aspect of your skills. It could be a smaller prototype or a game jam entry.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-cyan-700 text-cyan-100 text-sm px-3 py-1 rounded-full shadow-inner">Unreal Engine</span>
+                                <span class="bg-lime-700 text-lime-100 text-sm px-3 py-1 rounded-full shadow-inner">C++</span>
+                                <span class="bg-amber-700 text-amber-100 text-sm px-3 py-1 rounded-full shadow-inner">AI System</span>
+                            </div>
+                            <a href="project-4-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                    <!-- New Project Card 5 -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+5+Image" alt="Project 5 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 5 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">Another project demonstrating your versatility, perhaps focused on UI/UX or a specific gameplay mechanic.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-fuchsia-700 text-fuchsia-100 text-sm px-3 py-1 rounded-full shadow-inner">Unity3D</span>
+                                <span class="bg-emerald-700 text-emerald-100 text-sm px-3 py-1 rounded-full shadow-inner">C#</span>
+                                <span class="bg-rose-700 text-rose-100 text-sm px-3 py-1 rounded-full shadow-inner">Level Design</span>
+                            </div>
+                            <a href="project-5-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                    <!-- New Project Card 6 -->
+                    <div class="project-card rounded-xl shadow-xl overflow-hidden">
+                        <img src="https://placehold.co/600x400/2c3e50/ecf0f1?text=Project+6+Image" alt="Project 6 Screenshot" class="w-full h-56 object-cover rounded-t-xl border-b border-gray-700 transform hover:scale-105 transition-transform duration-300">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Project 6 Placeholder Title</h3>
+                            <p class="text-gray-300 mb-4 text-base leading-relaxed">This project could highlight a team collaboration or a specific technical challenge you overcame.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-gray-700 text-gray-100 text-sm px-3 py-1 rounded-full shadow-inner">Python Tooling</span>
+                                <span class="bg-teal-700 text-teal-100 text-sm px-3 py-1 rounded-full shadow-inner">VFX</span>
+                                <span class="bg-orange-700 text-orange-100 text-sm px-3 py-1 rounded-full shadow-inner">Game Design</span>
+                            </div>
+                            <a href="project-6-details.html" class="block w-full text-center btn-gradient text-white font-medium py-2 rounded-lg transition duration-300">View Project Details</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 py-8 text-center text-gray-400">
+        <div class="container mx-auto px-4">
+            <p>&copy; <span id="current-year"></span> Thomas Cox. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Check if the link is an internal anchor on this page
+                if (this.hostname === location.hostname && this.pathname === location.pathname) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const mobileMenuButton = document.getElementById('mobile-menu-button');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            });
+        });
+
+        // Toggle mobile menu
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Animate sections on scroll
+        const sections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    entry.target.style.opacity = '1'; // Ensure it stays visible
+                } else {
+                    entry.target.classList.remove('animate-fade-in');
+                    entry.target.style.opacity = '0';
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the section is visible
+        });
+
+        sections.forEach(section => {
+            section.style.opacity = '0'; // Start hidden for animation
+            observer.observe(section);
+        });
+
+        // Header shrink on scroll logic
+        const mainHeader = document.getElementById('main-header');
+        const mainContent = document.getElementById('main-content');
+
+        function updateHeaderAndContentPadding() {
+            if (window.scrollY > 50) {
+                mainHeader.classList.add('header-shrink');
+            } else {
+                mainHeader.classList.remove('header-shrink');
+            }
+            requestAnimationFrame(() => {
+                document.body.style.paddingTop = `${mainHeader.offsetHeight}px`;
+            });
+        }
+
+        window.addEventListener('scroll', updateHeaderAndContentPadding);
+        window.addEventListener('resize', updateHeaderAndContentPadding);
+        window.addEventListener('load', updateHeaderAndContentPadding);
+    </script>
+</body>
+</html>
