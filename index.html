@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thomas Cox - Game Developer Portfolio</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -17,6 +19,7 @@
             background-color: #0d0f1a; /* Very dark background */
             color: #f8fafc; /* Light off-white */
             scroll-behavior: smooth; /* Smooth scrolling for nav links */
+            /* Initial padding-top will be set by JavaScript on load */
         }
         /* Custom scrollbar for a sleeker look */
         ::-webkit-scrollbar {
@@ -35,6 +38,50 @@
 
         .header-bg {
             background: linear-gradient(to right, #1f2937, #111827); /* Subtle gradient for header */
+            padding-top: 1.5rem; /* Default large padding */
+            padding-bottom: 1.5rem; /* Default large padding */
+            transition: padding 0.3s ease-in-out; /* Smooth transition for padding */
+            box-sizing: border-box; /* Include padding in height calculation */
+            display: flex; /* Ensures content aligns within header */
+            align-items: center; /* Vertically centers content within the header */
+            min-height: 96px; /* Ensure a minimum height for the default state */
+        }
+
+        .header-shrink {
+            padding-top: 0.5rem; /* Smaller padding when shrunk */
+            padding-bottom: 0.5rem; /* Smaller padding when shrunk */
+            min-height: 60px; /* Smaller minimum height when shrunk */
+        }
+
+        .logo-text {
+            font-size: 3rem; /* Default large logo font size */
+            transition: font-size 0.3s ease-in-out, line-height 0.3s ease-in-out;
+            line-height: 1; /* Normalize line height for smoother font size transitions */
+        }
+
+        .header-shrink .logo-text {
+            font-size: 2rem; /* Smaller logo font size when shrunk */
+        }
+
+        .nav-link {
+            font-size: 1.125rem; /* Default large nav link font size (text-lg) */
+            padding: 0.5rem 0.75rem; /* Default padding for links */
+            transition: font-size 0.3s ease-in-out, padding 0.3s ease-in-out;
+            line-height: 1; /* Normalize line height for smoother font size transitions */
+        }
+
+        .header-shrink .nav-link {
+            font-size: 0.9rem; /* Smaller nav link font size when shrunk */
+            padding: 0.25rem 0.5rem; /* Reduced padding for links when shrunk */
+        }
+
+        /* Ensure mobile menu button size consistency */
+        #mobile-menu-button svg {
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+        }
+        .header-shrink #mobile-menu-button svg {
+            width: 2rem; /* Smaller icon */
+            height: 2rem;
         }
 
         .hero-section {
@@ -271,19 +318,19 @@
         }
     </style>
 </head>
-<body class="antialiased leading-normal tracking-wide pt-20"> <!-- Added padding-top to account for fixed header -->
+<body class="antialiased leading-normal tracking-wide"> <!-- Removed pt-20, padding managed by JS -->
 
     <!-- Header Section -->
-    <header class="header-bg shadow-lg py-4 fixed top-0 w-full z-10">
+    <header id="main-header" class="header-bg shadow-lg fixed top-0 w-full z-10">
         <nav class="container mx-auto flex justify-between items-center px-4">
-            <a href="#home" class="text-3xl font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2">Thomas Cox</a>
+            <a href="#home" class="font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2 logo-text">Thomas Cox</a>
             <div class="hidden md:flex space-x-6">
-                <a href="#home" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Home</a>
-                <a href="#portfolio" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Projects</a>
-                <a href="#about" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">About</a>
-                <a href="#skills" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Skills</a>
-                <a href="#links" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Links</a>
-                <a href="#contact" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Contact</a>
+                <a href="#home" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Home</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
+                <a href="#about" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Skills</a>
+                <a href="#links" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Links</a>
+                <a href="#contact" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Contact</a>
             </div>
             <!-- Mobile Menu Button -->
             <button id="mobile-menu-button" class="md:hidden text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -298,11 +345,12 @@
             <a href="#portfolio" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
             <a href="#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
             <a href="#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
-            <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
+            <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
+            <a href="#contact" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Contact</a>
         </div>
     </header>
 
-    <main class="pt-20"> <!-- Added padding-top to account for fixed header -->
+    <main id="main-content"> <!-- Removed pt-20, padding managed by JS -->
 
         <!-- Hero Section -->
         <section id="home" class="hero-section text-white py-20 md:py-32 animate-fade-in">
@@ -376,10 +424,10 @@
             <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 text-blue-300 drop-shadow-md">About Me</h2>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I am a <strong>Game Development graduate</strong> with a strong focus on both <strong>production</strong> and <strong>programming</strong>. I am currently dedicated to improving my skills in <strong>C++ and Unreal Engine</strong>, driven by a passion for building <strong>immersive gameplay experiences</strong> and streamlining development workflows.
+                    I am a <strong>Game Development graduate</strong> with a strong focus on both <strong>production</strong> and <strong>programming</strong>. I am currently improving my skills in <strong>C++ and Unreal Engine</strong>, driven by a passion for building <strong>immersive gameplay experiences</strong> and streamlining development workflows.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I have hands-on experience <strong>leading game projects</strong>, and implementing <strong>core mechanics and gameplay systems</strong>. My background has fostered strong <strong>problem-solving</strong>, <strong>creativity</strong>, and <strong>organizational skills</strong>, developed through both collaborative and independent work.
+                    I have hands-on experience <strong>leading game projects</strong>, and implementing <strong>core mechanics and gameplay systems</strong>. My background has fostered strong <strong>problem-solving</strong>, <strong>creativity</strong>, <strong>leadership</strong>, and <strong>organizational skills</strong>, developed through both collaborative and independent work.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
                     I am open to <strong>junior roles in game production or programming</strong>, with a strong desire to grow, contribute, and continuously improve while learning alongside experienced developers.
@@ -398,12 +446,7 @@
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Unreal Engine</span>
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">C#</span>
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">C++</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Godot Engine</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">GDScript</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">JavaScript</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Gameplay Programming</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Game Physics</span>
-                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">AI Programming</span>
+                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Python</span>
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Version Control (Git)</span>
                 </div>
 
@@ -415,6 +458,7 @@
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Adaptability</span>
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Creativity</span>
                     <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Time Management</span>
+                    <span class="bg-gray-900 text-blue-300 px-5 py-2 rounded-full shadow-lg text-lg transform hover:scale-105 transition-transform duration-200 skill-tag">Leadership</span>
                 </div>
             </div>
         </section>
@@ -424,15 +468,15 @@
             <div class="container mx-auto px-6 max-w-2xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-12 text-blue-300 drop-shadow-md">Connect with Me</h2>
                 <div class="flex flex-col md:flex-row justify-center items-center gap-8">
-                    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" class="social-link" aria-label="LinkedIn Profile">
+                    <a href="https://www.linkedin.com/in/thomas-cox-gamedev/" target="_blank" class="social-link" aria-label="LinkedIn Profile">
                         <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="your-resume.pdf" target="_blank" class="social-link" aria-label="Download Resume (CV)">
+                    <a href="https://drive.google.com/file/d/1Yj8xx8pI1fyiAnhj7-T3BROye6ODzdaI/view?usp=sharing" target="_blank" class="social-link" aria-label="Download Resume (CV)">
                         <i class="fas fa-file-alt"></i>
                         <span>Resume (CV)</span>
                     </a>
-                     <a href="https://github.com/YourGitHubProfile" target="_blank" class="social-link" aria-label="GitHub Profile">
+                     <a href="https://github.com/thomas3983" target="_blank" class="social-link" aria-label="GitHub Profile">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
@@ -474,7 +518,6 @@
     <footer class="bg-gray-900 py-8 text-center text-gray-400">
         <div class="container mx-auto px-4">
             <p>&copy; <span id="current-year"></span> Thomas Cox. All rights reserved.</p>
-            <p class="mt-2">Designed and Developed by Thomas Cox</p>
         </div>
     </footer>
 
@@ -597,6 +640,27 @@
                 }, 5000);
             }
         });
+
+        // Header shrink on scroll logic
+        const mainHeader = document.getElementById('main-header');
+        const mainContent = document.getElementById('main-content');
+
+        function updateHeaderAndContentPadding() {
+            if (window.scrollY > 50) { // Shrink after 50px scroll
+                mainHeader.classList.add('header-shrink');
+            } else {
+                mainHeader.classList.remove('header-shrink');
+            }
+            // Dynamically set body's padding-top to match header height
+            // This ensures content is never hidden behind the fixed header.
+            requestAnimationFrame(() => {
+                document.body.style.paddingTop = `${mainHeader.offsetHeight}px`;
+            });
+        }
+
+        window.addEventListener('scroll', updateHeaderAndContentPadding);
+        window.addEventListener('resize', updateHeaderAndContentPadding);
+        window.addEventListener('load', updateHeaderAndContentPadding); // Initial call on page load
     </script>
 </body>
 </html>
