@@ -316,6 +316,12 @@
             position: relative;
             z-index: 1;
         }
+
+        /* Combined bold and light blue text for about section */
+        .about-highlight {
+            font-weight: 700; /* Bold */
+            color: #93c5fd; /* Light blue (text-blue-300) */
+        }
     </style>
 </head>
 <body class="antialiased leading-normal tracking-wide"> <!-- Removed pt-20, padding managed by JS -->
@@ -326,7 +332,7 @@
             <a href="#home" class="font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2 logo-text">Thomas Cox</a>
             <div class="hidden md:flex space-x-6">
                 <a href="#home" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Home</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
+                <a href="projects.html" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
                 <a href="#about" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">About</a>
                 <a href="#skills" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Skills</a>
                 <a href="#links" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Links</a>
@@ -342,7 +348,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg" role="navigation" aria-label="Mobile navigation">
             <a href="#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
-            <a href="#portfolio" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
+            <a href="projects.html" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
             <a href="#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
             <a href="#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
             <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
@@ -427,13 +433,13 @@
             <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 text-blue-300 drop-shadow-md">About Me</h2>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I am a <strong>Game Development graduate</strong> with a strong focus on both <strong>production</strong> and <strong>programming</strong>. I am currently improving my skills in <strong>C++ and Unreal Engine</strong>, driven by a passion for building <strong>immersive gameplay experiences</strong> and streamlining development workflows.
+                    I am a <span class="about-highlight">Game Development graduate</span> with a strong focus on both production and programming. I am currently improving my skills in <span class="about-highlight">C++ and Unreal Engine</span>, driven by a passion for building <span class="about-highlight">immersive gameplay experiences</span>.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I have hands-on experience <strong>leading game projects</strong>, and implementing <strong>core mechanics and gameplay systems</strong>. My background has fostered strong <strong>problem-solving</strong>, <strong>creativity</strong>, <strong>leadership</strong>, and <strong>organizational skills</strong>, developed through both collaborative and independent work.
+                    I have hands-on experience <span class="about-highlight">leading game projects</span>, and implementing <span class="about-highlight">core mechanics and gameplay systems</span>. My background has fostered strong <span class="about-highlight">problem-solving</span> and <span class="about-highlight">leadership</span> skills, developed through both collaborative and independent work.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I am open to <strong>junior roles in game production or programming</strong>, with a strong desire to grow, contribute, and continuously improve while learning alongside experienced developers.
+                    I am open to <span class="about-highlight">junior roles in game production or programming</span>, with a strong desire to grow, contribute, and continuously improve.
                 </p>
             </div>
         </section>
@@ -528,16 +534,19 @@
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile menu if open
-                const mobileMenu = document.getElementById('mobile-menu');
-                const mobileMenuButton = document.getElementById('mobile-menu-button');
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                // Check if the link is an internal anchor on this page
+                if (this.hostname === location.hostname && this.pathname === location.pathname) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    const mobileMenuButton = document.getElementById('mobile-menu-button');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenuButton.setAttribute('aria-expanded', 'false');
+                    }
                 }
             });
         });
