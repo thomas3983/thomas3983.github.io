@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 1 Placeholder Title - Thomas Cox Portfolio</title>
+    <title>Integrating AI for Immersive NPC Gameplay - Thomas Cox Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -64,6 +64,79 @@
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
+        /* Slideshow specific styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            overflow: hidden; /* Hide overflowing images */
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            background-color: #111827; /* Dark background for the slideshow area */
+        }
+        .slides {
+            display: flex; /* Arrange images in a row */
+            transition: transform 0.5s ease-in-out; /* Smooth transition for slides */
+        }
+        .slides img {
+            width: 100%; /* Each image takes full width of the container */
+            flex-shrink: 0; /* Prevent images from shrinking */
+            object-fit: cover; /* Cover the area, maintaining aspect ratio */
+            border-radius: 8px;
+            height: 450px; /* Fixed height for consistency */
+        }
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: auto;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
+            z-index: 5; /* Ensure buttons are above images */
+        }
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        /* Optional: Dots for navigation */
+        .dot-container {
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            z-index: 5;
+        }
+        .dot {
+            cursor: pointer;
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .active-dot, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Blue Highlight Style for Important Keywords */
+        .blue-highlight {
+            font-weight: 700;
+            color: #60a5fa; /* Tailwind's blue-400 or similar */
+        }
     </style>
 </head>
 <body class="antialiased leading-normal tracking-wide pt-20"> <!-- Added padding-top for fixed header -->
@@ -74,7 +147,7 @@
             <a href="index.html#home" class="text-3xl font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2">Thomas Cox</a>
             <div class="hidden md:flex space-x-6">
                 <a href="index.html#home" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Home</a>
-                <a href="index.html#portfolio" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Projects</a>
+                <a href="all-projects.html" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Projects</a>
                 <a href="index.html#about" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">About</a>
                 <a href="index.html#skills" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Skills</a>
                 <a href="index.html#links" class="text-lg text-gray-300 hover:text-white px-3 py-2 rounded-lg transition-colors duration-300">Links</a>
@@ -90,7 +163,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg">
             <a href="index.html#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
-            <a href="index.html#portfolio" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
+            <a href="all-projects.html" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
             <a href="index.html#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
             <a href="index.html#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
             <a href="index.html#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
@@ -100,148 +173,140 @@
 
     <main class="container mx-auto px-6 py-10 md:py-16">
         <div class="content-section">
-            <a href="index.html#portfolio" class="text-blue-400 hover:text-blue-300 mb-6 inline-block">
+            <a href="all-projects.html" class="text-blue-400 hover:text-blue-300 mb-6 inline-block">
                 <i class="fas fa-arrow-left mr-2"></i> Back to Projects
             </a>
-            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-blue-300 drop-shadow-md">Project 1: Placeholder Title</h1>
+            <h1 class="text-4xl md:text-5xl font-bold mb-6 text-blue-300 drop-shadow-md">Integrating AI for Immersive NPC Gameplay</h1>
 
-            <!-- Game Bio / About the Game -->
-            <h2 class="text-3xl font-semibold mb-4 text-white">About Project 1</h2>
+            <!-- Game Bio / About the Project -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">About the Project</h2>
             <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-                <strong>THIS IS THE BIO FOR PROJECT 1.</strong>
-                Describe what this game/project is about. What's its core concept, genre, and unique selling points? How does it differentiate itself? What kind of experience does it offer the player?
-                <em>Example: "Project 1 is a fast-paced 2D platformer focusing on precise movement and environmental puzzles, set in a vibrant, hand-drawn fantasy world. Players control Elara, a nimble adventurer, on her quest to retrieve ancient artifacts."</em>
-                Be engaging and concise, but provide enough detail to hook the reader.
+                This was my final year university project, focused on integrating advanced <span class="blue-highlight">Artificial Intelligence behaviors</span> into non-player characters (NPCs) within a game environment. The goal was to move beyond simple patrol patterns and create NPCs that exhibit complex decision-making, respond dynamically to player actions, and contribute to a more immersive and unpredictable gameplay experience. This involved designing intricate dialogue trees and perception systems, primarily driven by <span class="blue-highlight">Unreal Engine Blueprints</span> and a <span class="blue-highlight">Flask backend</span>, to bring the virtual inhabitants to life.
             </p>
 
-            <!-- Key Features / Overview -->
+            <!-- Key Facts & My Role -->
             <h2 class="text-3xl font-semibold mb-4 text-white">Quick Facts & My Role</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
-                    <p class="text-gray-300 mb-2"><strong>Genre:</strong> [e.g., RPG, Shooter, Puzzle, Platformer]</p>
-                    <p class="text-gray-300 mb-2"><strong>Platform:</strong> [e.g., PC, Mobile, WebGL]</p>
-                    <p class="text-gray-300 mb-2"><strong>Development Time:</strong> [e.g., 3 months, 6 weeks]</p>
-                    <p class="text-gray-300 mb-2"><strong>Team Size:</strong> [e.g., Solo, 3 (My Role: Programmer)]</p>
+                    <p class="text-gray-300 mb-2"><strong>Project Type:</strong> Final Year University Project (Solo)</p>
+                    <p class="text-gray-300 mb-2"><strong>Platform:</strong> PC (Unreal Engine)</p>
+                    <p class="text-gray-300 mb-2"><strong>Development Period:</strong> University Year (focused implementation from January to April)</p>
+                    <p class="text-gray-300 mb-2"><strong>My Role:</strong> <span class="blue-highlight">AI Programmer</span>, <span class="blue-highlight">Blueprint Developer</span>, <span class="blue-highlight">Researcher</span>, <span class="blue-highlight">Prototyper</span></p>
                 </div>
                 <div>
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="tag-pill">[Engine/Framework Used]</span>
-                        <span class="tag-pill">[Language Used]</span>
-                        <span class="tag-pill">[Key Technology 1]</span>
-                        <span class="tag-pill">[Key Technology 2]</span>
-                        <span class="tag-pill">[Tool Used]</span>
-                        <span class="tag-pill">[Concept/Feature]</span>
+                        <span class="tag-pill">Unreal Engine</span>
+                        <span class="tag-pill">AI Systems</span>
+                        <span class="tag-pill">Blueprints</span>
+                        <span class="tag-pill">Dialogue Trees</span>
+                        <span class="tag-pill">Perception Systems</span>
+                        <span class="tag-pill">Flask (Data Backend)</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Visuals: Screenshots & Videos (Enhanced Guidance) -->
+            <!-- Visuals & Gameplay Highlights -->
             <h2 class="text-3xl font-semibold mb-4 text-white">Visuals & Gameplay Highlights</h2>
             <div class="grid grid-cols-1 gap-6 mb-8">
                 <!-- Primary Gameplay Video (Crucial for a game portfolio) -->
                 <div class="aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-xl flex items-center justify-center text-gray-400 text-center">
-                    <!-- REPLACE 'YOUR_MAIN_GAMEPLAY_VIDEO_ID' with your ACTUAL YouTube or Vimeo video ID for Project 1 -->
-                    <!-- This should be your main gameplay trailer or a comprehensive overview video for Project 1 -->
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_MAIN_GAMEPLAY_VIDEO_ID_FOR_PROJECT_1?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Project 1 Gameplay Trailer"></iframe>
+                    <!-- REPLACE 'YOUR_AI_PROJECT_VIDEO_ID' with your ACTUAL YouTube or Vimeo video ID for this project -->
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_AI_PROJECT_VIDEO_ID?modestbranding=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-in; gyroscope; picture-in-picture" allowfullscreen title="AI NPC Project Gameplay Trailer"></iframe>
                 </div>
                 <p class="text-gray-400 text-sm text-center">
-                    <strong>Tip:</strong> Embed a 1-2 minute gameplay trailer or a short demo reel showcasing core mechanics and visual fidelity for Project 1.
+                    <strong>Tip:</strong> Embed a video showcasing the NPC AI in action, demonstrating different behaviors and responses.
                 </p>
 
-                <!-- Multiple Screenshots / GIFs -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+1+Screenshot+1" alt="Screenshot of key gameplay moment 1 from Project 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+1+Screenshot+2" alt="Screenshot of character or environment from Project 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+1+Screenshot+3" alt="GIF showing a specific mechanic or animation from Project 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <img src="https://placehold.co/800x450/36454F/F5F5DC?text=Project+1+Screenshot+4" alt="UI or HUD example from Project 1" class="w-full rounded-lg shadow-lg transform hover:scale-105 transition-transform duration-300">
-                    <!-- Add more as needed, consider GIFs for showing quick animations/mechanics -->
+                <!-- Image Slideshow -->
+                <div class="slideshow-container">
+                    <div class="slides">
+                        <img src="https://placehold.co/800x450/36454F/F5F5DC?text=AI+NPC+Screenshot+1" alt="Screenshot of NPC in environment">
+                        <img src="https://placehold.co/800x450/36454F/F5F5DC?text=AI+NPC+Screenshot+2" alt="Screenshot of NPC interacting with environment">
+                        <img src="https://placehold.co/800x450/36454F/F5F5DC?text=AI+NPC+Blueprint+Graph+1" alt="Blueprint graph example 1">
+                        <img src="https://placehold.co/800x450/36454F/F5F5DC?text=AI+NPC+Blueprint+Graph+2" alt="Blueprint graph example 2">
+                        <img src="https://placehold.co/800x450/36454F/F5F5DC?text=AI+NPC+Flask+Integration+Diagram" alt="Diagram of Flask integration">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    <div class="dot-container">
+                        <span class="dot active-dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                    </div>
                 </div>
                 <p class="text-gray-400 text-sm text-center mt-4">
-                    <strong>Tip:</strong> Use high-resolution images. GIFs are great for showing quick, repeatable mechanics or animations. Caption each image briefly. Make sure these are all from Project 1.
+                    <strong>Tip:</strong> Include visuals that demonstrate AI logic, such as screenshots of Blueprints or diagrams of the Flask integration.
                 </p>
             </div>
 
-            <!-- Core Mechanics Explained -->
-            <h2 class="text-3xl font-semibold mb-4 text-white">Core Game Mechanics & Implementation (Project 1)</h2>
+            <!-- Core AI Systems & Implementation -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Core AI Systems & Implementation</h2>
             <div class="space-y-6 mb-8">
-                <!-- Mechanic 1 for Project 1 -->
+                <!-- Mechanic 1: Blueprint-Driven AI Dialogue Trees -->
                 <div class="mechanic-card">
-                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">1. [Name of Mechanic 1]</h3>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 1.
-                        <em>Example: "The 'Flow State' mechanic enhances player speed and allows temporary invincibility after chaining 5 successful evasions."</em>
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">1. Blueprint-Driven AI Dialogue Trees for NPC Interaction</h3>
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> Implemented a flexible <span class="blue-highlight">dialogue tree system</span> within Unreal Engine Blueprints that allowed NPCs to engage in dynamic conversations with the player. This system enabled branching narratives and varied responses based on player choices and the NPC's current state.
                     </p>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
-                        <em>Example: "Implemented using a Finite State Machine (FSM) in Unity C#. The FSM transitions based on player input and collision events, triggering particle effects via Unity's VFX Graph and applying a temporary invulnerability buffer. Optimized state transitions to ensure zero lag, crucial for a fast-paced game."</em>
-                        Be specific about technologies, algorithms, and your code decisions.
-                    </p>
-                    <!-- Optional: Link to relevant code snippet on GitHub or an explanation -->
-                    <!-- <a href="https://github.com/YourGitHubProfile/Project1/blob/main/Scripts/FlowStateController.cs" target="_blank" class="text-blue-400 hover:underline text-sm">View Code Snippet <i class="fas fa-external-link-alt ml-1"></i></a> -->
-                </div>
-
-                <!-- Mechanic 2 for Project 1 -->
-                <div class="mechanic-card">
-                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">2. [Name of Mechanic 2]</h3>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 1.
-                    </p>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Designed a visual, node-based dialogue system using <span class="blue-highlight">Unreal Engine Blueprints</span>. Each node represented a line of dialogue or a player choice, with connections defining conversational flow. Logic was built directly into Blueprints to manage conversation states, character responses, and trigger in-game events based on dialogue outcomes. This approach prioritized rapid iteration and visual clarity for designing complex interactive dialogues.
                     </p>
                 </div>
 
-                <!-- Mechanic 3 for Project 1 (Add more as needed) -->
+                <!-- Mechanic 2: AI Perception System (Blueprint & Flask Integrated) -->
                 <div class="mechanic-card">
-                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">3. [Name of Mechanic 3]</h3>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>What it does:</strong> Explain the player-facing functionality of this specific mechanic in Project 1.
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">2. Robust AI Perception System (Blueprint & Flask Integrated)</h3>
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> An <span class="blue-highlight">AI Perception System</span> allows virtual agents (like NPCs) to "sense" their environment, similar to how humans perceive. This includes awareness of physical surroundings, other entities' locations, and even their names. The data gathered from these senses then informs the AI's decision-making and dialogue choices, enabling them to react to the world and the player.
                     </p>
-                    <p class="text-gray-300 mb-3 leading-relaxed">
-                        <strong>How I made it:</strong> Detail the technical implementation for this mechanic.
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Configured Unreal Engine's AI Perception Component within NPC Blueprints to detect sight and hearing cues. Crucially, I integrated this with the <span class="blue-highlight">Flask backend</span>, which supplied NPCs with broader contextual data about their environment, important objects, and the names of other characters or points of interest. Blueprint event handlers processed this rich data, updating the AI's working memory to influence their responses and dialogue choices dynamically.
                     </p>
                 </div>
 
-                <!-- Add more mechanics as needed for Project 1 -->
+                <!-- Mechanic 3: Data-Driven Personality/Behavior (Flask Integration) -->
+                <div class="mechanic-card">
+                    <h3 class="text-2xl font-semibold mb-2 text-blue-400">3. Data-Driven NPC Personalities via Flask</h3>
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>What it does:</strong> Allowed for flexible definition and modification of NPC personalities and base behaviors through external data, enabling rapid iteration without recompiling the game.
+                    </p>
+                    <p class="text-lg text-gray-300 mb-3 leading-relaxed">
+                        <strong>How I made it:</strong> Developed a <span class="blue-highlight">Flask-based backend server</span> to host and serve JSON data representing NPC personalities (e.g., aggression levels, preferred patrol routes, reaction thresholds). The Unreal Engine client, primarily via <span class="blue-highlight">Blueprints and C++ calls</span>, dynamically fetched this data at runtime. This allowed for external modification and A/B testing of AI behaviors, enhancing design flexibility.
+                    </p>
+                </div>
             </div>
 
-            <!-- My Role & Contributions (Project 1 Specific) -->
-            <h2 class="text-3xl font-semibold mb-4 text-white">My Specific Contributions to Project 1</h2>
+            <!-- My Role & Contributions -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">My Specific Contributions to this Project</h2>
             <ul class="list-disc list-inside text-gray-300 mb-8 leading-relaxed">
-                <li><strong>[Your Specific Contribution 1]:</strong> [Detailed explanation, use action verbs and quantify where possible. <em>Example: "Developed the dynamic camera system, utilizing Cinemachine to achieve smooth transitions and focus on key gameplay elements."</em>]</li>
-                <li><strong>[Your Specific Contribution 2]:</strong> [Detailed explanation. <em>Example: "Implemented enemy AI behaviors, including patrol paths, line-of-sight detection, and simple decision-making trees, in C++ using Unreal Engine's Behavior Trees."</em>]</li>
-                <li><strong>[Your Specific Contribution 3]:</strong> [Detailed explanation. <em>Example: "Optimized level loading times by implementing asynchronous scene loading and asset bundling, reducing load times by 30%."</em>]</li>
-                <li><strong>[Your Specific Contribution 4]:</strong> [Detailed explanation.]</li>
-                <!-- Add more contributions relevant to Project 1 -->
+                <li><span class="blue-highlight">Researched and Prototyped</span> core AI concepts, focusing on efficient NPC interaction and environmental awareness.</li>
+                <li>Designed and implemented the entire <span class="blue-highlight">Blueprint-driven AI Dialogue Tree architecture</span>, governing complex NPC conversations and branching narratives.</li>
+                <li>Developed custom <span class="blue-highlight">Blueprint functions and macros</span> for core AI logic, including dynamic pathfinding, target acquisition, and interaction routines.</li>
+                <li>Configured and integrated <span class="blue-highlight">Unreal's AI Perception System</span> (sight, hearing, damage) within Blueprints, enriched by Flask-driven environmental data.</li>
+                <li>Created a <span class="blue-highlight">Flask-based backend server</span> for data-driven NPC personality traits, enabling flexible AI customization and rapid design iteration.</li>
+                <li>Utilized <span class="blue-highlight">C++</span> to expose core functionalities to Blueprints, enabling seamless development and iteration by designers.</li>
             </ul>
 
-            <!-- Challenges & Learning (Project 1 Specific) -->
-            <h2 class="text-3xl font-semibold mb-4 text-white">Key Challenges & My Learnings (Project 1)</h2>
-            <p class="text-gray-300 mb-4 leading-relaxed">
-                <strong>Describe a significant technical or design challenge unique to Project 1.</strong>
-                <em>Example: "One major challenge was optimizing the rendering pipeline for the complex particle effects used in combat. Initially, these caused significant framerate drops on mid-range hardware. I resolved this by researching and applying GPU instancing techniques and optimizing shader complexity, which improved performance by 20-25% during intense combat sequences."</em>
-                Explain <strong>how</strong> you solved it and <strong>what you learned</strong> from that process. This shows your problem-solving skills and capacity for growth.
+            <!-- Challenges & Learning -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Key Challenges & My Learnings</h2>
+            <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                A primary challenge was ensuring the NPCs felt "intelligent" and not merely scripted, especially when reacting to unpredictable player actions. Early iterations sometimes led to repetitive or easily exploitable AI. I overcame this by continuously <span class="blue-highlight">iterating on Blueprint logic</span>, incorporating elements of <span class="blue-highlight">randomness</span> and <span class="blue-highlight">multiple decision paths</span> based on varying conditions. This taught me the importance of adaptive AI, where NPCs can anticipate and adapt rather than just react, leading to more believable and engaging adversaries/allies. Furthermore, integrating Flask with Unreal Engine provided valuable experience in <span class="blue-highlight">client-server communication</span> and <span class="blue-highlight">external data management</span> for game systems.
             </p>
 
-            <!-- Links for Project 1 -->
-            <h2 class="text-3xl font-semibold mb-4 text-white">Project 1 Links</h2>
+            <!-- Links for Project -->
+            <h2 class="text-3xl font-semibold mb-4 text-white">Project Links</h2>
             <div class="flex flex-wrap gap-4 mb-8">
-                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
-                    <i class="fas fa-play-circle"></i> <span>Play Demo (Project 1)</span>
+                <a href="https://github.com/thomas3983/AI-NPC-Project" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fab fa-github"></i> <span>View Project Code on GitHub</span>
                 </a>
-                <a href="https://github.com/YourGitHubProfile/Project1Repo" target="_blank" class="btn-primary flex items-center space-x-2">
-                    <i class="fab fa-github"></i> <span>View Code on GitHub (Project 1)</span>
+                <a href="link-to-your-fyp-report.pdf" target="_blank" class="btn-primary flex items-center space-x-2">
+                    <i class="fas fa-file-pdf"></i> <span>View Final Project Report (PDF)</span>
                 </a>
-                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
-                    <i class="fas fa-pencil-alt"></i> <span>Dev Blog/Post-Mortem (Project 1)</span>
-                </a>
-                <a href="#" target="_blank" class="btn-primary flex items-center space-x-2">
-                    <i class="fab fa-itch-io"></i> <span>Itch.io Page (Project 1)</span>
-                </a>
-                <!-- Add more relevant links (e.g., Artstation for art assets, Steam Greenlight, etc. specific to Project 1) -->
             </div>
 
-            <a href="index.html#portfolio" class="text-blue-400 hover:text-blue-300 mt-8 inline-block">
+            <a href="all-projects.html" class="text-blue-400 hover:text-blue-300 mt-8 inline-block">
                 <i class="fas fa-arrow-left mr-2"></i> Back to Projects
             </a>
         </div>
@@ -263,6 +328,37 @@
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
+        });
+
+        // Slideshow JavaScript
+        let slideIndex = 1;
+        const slides = document.querySelector('.slides');
+        const images = slides.querySelectorAll('img');
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlides(n) {
+            if (n > images.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = images.length; }
+
+            // Move the slides container to show the correct image
+            slides.style.transform = `translateX(-${(slideIndex - 1) * 100}%)`;
+
+            // Update dot indicators
+            dots.forEach(dot => dot.classList.remove('active-dot'));
+            dots[slideIndex - 1].classList.add('active-dot');
+        }
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        // Initialize slideshow
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlides(slideIndex);
         });
     </script>
 </body>
