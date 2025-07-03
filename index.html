@@ -324,7 +324,7 @@
         }
     </style>
 </head>
-<body class="antialiased leading-normal tracking-wide"> <!-- Removed pt-20, padding managed by JS -->
+<body class="antialiased leading-normal tracking-wide">
 
     <!-- Header Section -->
     <header id="main-header" class="header-bg shadow-lg fixed top-0 w-full z-10">
@@ -332,7 +332,7 @@
             <a href="#home" class="font-extrabold text-blue-400 hover:text-blue-300 transition-colors duration-300 rounded-lg p-2 logo-text">Thomas Cox</a>
             <div class="hidden md:flex space-x-6">
                 <a href="#home" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Home</a>
-                <a href="projects.html" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
+                <a href="all-projects.html" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Projects</a>
                 <a href="#about" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">About</a>
                 <a href="#skills" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Skills</a>
                 <a href="#links" class="text-gray-300 hover:text-white rounded-lg transition-colors duration-300 nav-link">Links</a>
@@ -348,7 +348,7 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 mt-2 rounded-b-lg" role="navigation" aria-label="Mobile navigation">
             <a href="#home" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Home</a>
-            <a href="projects.html" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
+            <a href="all-projects.html" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Projects</a>
             <a href="#about" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">About</a>
             <a href="#skills" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Skills</a>
             <a href="#links" class="block text-center text-lg text-gray-300 hover:text-white py-2 px-4 rounded-lg transition-colors duration-300">Links</a>
@@ -356,14 +356,14 @@
         </div>
     </header>
 
-    <main id="main-content"> <!-- Removed pt-20, padding managed by JS -->
+    <main id="main-content">
 
         <!-- Hero Section -->
         <section id="home" class="hero-section text-white py-20 md:py-32 animate-fade-in">
             <div class="container mx-auto text-center px-6 relative z-10">
                 <h1 class="text-5xl md:text-7xl font-extrabold mb-4 drop-shadow-xl animate-pulse-light">Thomas Cox</h1>
-                <p class="text-xl md:text-3xl text-blue-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                    Crafting immersive worlds, engaging gameplay, and cutting-edge interactive experiences.
+                <p class="text-2xl md:text-3xl text-blue-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Game Programmer. C++ & Unreal Engine Developer.
                 </p>
                 <a href="#portfolio" class="btn-gradient inline-block mt-4">View My Work</a>
             </div>
@@ -422,7 +422,7 @@
 
                     <!-- View All Projects Button -->
                     <div class="col-span-1 md:col-span-2 lg:col-span-3 flex justify-center mt-8">
-                        <a href="projects.html" class="btn-gradient inline-block">View All Projects</a>
+                        <a href="all-projects.html" class="btn-gradient inline-block">View All Projects</a>
                     </div>
                 </div>
             </div>
@@ -433,13 +433,13 @@
             <div class="container mx-auto px-6 max-w-3xl text-center">
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 text-blue-300 drop-shadow-md">About Me</h2>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I am a <span class="about-highlight">Game Development graduate</span> with a strong focus on both production and programming. I am currently improving my skills in <span class="about-highlight">C++ and Unreal Engine</span>, driven by a passion for building <span class="about-highlight">immersive gameplay experiences</span>.
+                    I am a <span class="about-highlight">Game Development graduate</span> specializing in <span class="about-highlight">programming and production</span>. My passion is building <span class="about-highlight">immersive gameplay experiences</span> by engineering robust systems in <span class="about-highlight">C++ and Unreal Engine</span>.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I have hands-on experience <span class="about-highlight">leading game projects</span>, and implementing <span class="about-highlight">core mechanics and gameplay systems</span>. My background has fostered strong <span class="about-highlight">problem-solving</span> and <span class="about-highlight">leadership</span> skills, developed through both collaborative and independent work.
+                    I have hands-on experience <span class="about-highlight">leading projects</span> and implementing <span class="about-highlight">core game mechanics</span>, notably integrating <span class="about-highlight">advanced AI into NPCs</span> for dynamic interactions. I thrive on <span class="about-highlight">problem-solving</span> and <span class="about-highlight">collaborative development</span>.
                 </p>
                 <p class="text-lg text-gray-200 leading-relaxed mb-6">
-                    I am open to <span class="about-highlight">junior roles in game production or programming</span>, with a strong desire to grow, contribute, and continuously improve.
+                    I am open to <span class="about-highlight">junior roles in game production or programming</span>, with a strong desire to <span class="about-highlight">grow, contribute, and continuously improve</span>.
                 </p>
             </div>
         </section>
@@ -447,7 +447,7 @@
         <!-- Skills Section -->
         <section id="skills" class="py-16 md:py-24 section-bg-dark animate-fade-in">
             <div class="container mx-auto px-6 max-w-3xl text-center">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-blue-300 drop-shadow-md">Skills</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-12 text-blue-300 drop-shadow-md">Skills</h2>
 
                 <h3 class="text-3xl font-semibold mt-10 mb-6 text-white">Technical Skills</h3>
                 <div class="flex flex-wrap justify-center gap-4 mb-10">
@@ -485,7 +485,7 @@
                         <i class="fas fa-file-alt"></i>
                         <span>Resume (CV)</span>
                     </a>
-                     <a href="https://github.com/thomas3983" target="_blank" class="social-link" aria-label="GitHub Profile">
+                    <a href="https://github.com/thomas3983" target="_blank" class="social-link" aria-label="GitHub Profile">
                         <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
@@ -499,7 +499,7 @@
             <div class="container mx-auto px-6 max-w-2xl">
                 <h2 class="text-4xl md:text-5xl font-bold text-center mb-6 text-blue-300 drop-shadow-md">Contact Me</h2>
                 <p class="text-lg text-center text-gray-300 mb-8 leading-relaxed">
-                    If you have any questions, wish to discuss a project, or are exploring potential work opportunities, please don't hesitate to reach out.
+                    If you wish to contact me, fill out the form below.
                 </p>
                 <form id="contactForm" action="https://formspree.io/f/mjkredaz" method="POST" class="bg-gray-900 p-8 rounded-xl shadow-xl border border-gray-700">
                     <div class="mb-6">
@@ -571,7 +571,6 @@
                     entry.target.classList.add('animate-fade-in');
                     entry.target.style.opacity = '1'; // Ensure it stays visible
                 } else {
-                    // This part ensures the animation re-plays when scrolling back up.
                     entry.target.classList.remove('animate-fade-in');
                     entry.target.style.opacity = '0';
                 }
@@ -581,76 +580,8 @@
         });
 
         sections.forEach(section => {
-            // Apply fade-in animation to all sections except the hero section initially
-            if (section.id !== 'home') {
-                 section.style.opacity = '0'; // Start hidden for animation
-                 observer.observe(section);
-            }
-        });
-
-        // Ensure hero section is visible immediately
-        document.getElementById('home').style.opacity = '1';
-
-
-        // --- Contact Form Submission Logic (Formspree.io) ---
-        const contactForm = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            // Set the _replyto field to the user's entered email
-            const emailInput = document.getElementById('email');
-            const replyToInput = contactForm.querySelector('input[name="_replyto"]');
-            if (replyToInput) {
-                replyToInput.value = emailInput.value;
-            }
-
-            const formData = new FormData(contactForm);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            // Show loading message
-            formMessage.classList.remove('hidden', 'bg-green-700', 'bg-red-700', 'text-green-100', 'text-red-100');
-            formMessage.classList.add('bg-blue-700', 'text-blue-100', 'animate-pulse');
-            formMessage.textContent = 'Sending message...';
-
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: json
-                });
-
-                if (response.ok) {
-                    formMessage.classList.remove('bg-blue-700', 'animate-pulse');
-                    formMessage.classList.add('bg-green-700', 'text-green-100');
-                    formMessage.textContent = 'Message sent successfully! I will get back to you soon.';
-                    contactForm.reset(); // Clear the form
-                } else {
-                    const data = await response.json();
-                    formMessage.classList.remove('bg-blue-700', 'animate-pulse');
-                    formMessage.classList.add('bg-red-700', 'text-red-100');
-                    if (data.errors) {
-                        formMessage.textContent = data.errors.map(error => error.message).join(', ');
-                    } else {
-                        formMessage.textContent = 'Oops! There was an error sending your message. Please try again.';
-                    }
-                }
-            } catch (error) {
-                console.error('Network error:', error);
-                formMessage.classList.remove('bg-blue-700', 'animate-pulse');
-                formMessage.classList.add('bg-red-700', 'text-red-100');
-                formMessage.textContent = 'Network error. Please check your connection and try again.';
-            } finally {
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.classList.add('hidden');
-                }, 5000);
-            }
+            section.style.opacity = '0'; // Start hidden for animation
+            observer.observe(section);
         });
 
         // Header shrink on scroll logic
@@ -658,13 +589,11 @@
         const mainContent = document.getElementById('main-content');
 
         function updateHeaderAndContentPadding() {
-            if (window.scrollY > 50) { // Shrink after 50px scroll
+            if (window.scrollY > 50) {
                 mainHeader.classList.add('header-shrink');
             } else {
                 mainHeader.classList.remove('header-shrink');
             }
-            // Dynamically set body's padding-top to match header height
-            // This ensures content is never hidden behind the fixed header.
             requestAnimationFrame(() => {
                 document.body.style.paddingTop = `${mainHeader.offsetHeight}px`;
             });
@@ -672,7 +601,7 @@
 
         window.addEventListener('scroll', updateHeaderAndContentPadding);
         window.addEventListener('resize', updateHeaderAndContentPadding);
-        window.addEventListener('load', updateHeaderAndContentPadding); // Initial call on page load
+        window.addEventListener('load', updateHeaderAndContentPadding);
     </script>
 </body>
 </html>
